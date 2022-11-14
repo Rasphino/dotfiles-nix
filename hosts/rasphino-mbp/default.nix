@@ -31,8 +31,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.YourUserName = { pkgs, ... }: {
-    stateVersion = "22.05";
-
+  home-manager.users.rasp = { pkgs, ... }: {
+    home.stateVersion = "22.05";
   };
 }
