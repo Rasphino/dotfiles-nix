@@ -15,6 +15,7 @@
     neovim
 
     alacritty
+    zoxide
 
     curl
     wget
