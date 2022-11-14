@@ -9,6 +9,12 @@
   programs.zsh.enable = true;
   # bash is enabled by default
 
+  environment.systemPackages = with pkgs; [
+    helix
+    curl
+    wget
+  ];
+
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
@@ -27,6 +33,6 @@
   home-manager.useUserPackages = true;
   home-manager.users.YourUserName = { pkgs, ... }: {
     stateVersion = "22.05";
-    
+
   };
 }
