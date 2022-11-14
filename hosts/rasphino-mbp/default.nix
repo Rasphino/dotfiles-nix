@@ -10,9 +10,22 @@
   # bash is enabled by default
 
   environment.systemPackages = with pkgs; [
+    # editors
     helix
+    neovim
+
+    alacritty
+
     curl
     wget
+
+    # programming environments
+    dotnet-sdk_7
+    rustup
+
+    # fonts
+    nerdfonts
+    iosevka
   ];
 
   homebrew = {
@@ -26,6 +39,7 @@
       "raycast"
       "logseq"
       "iina"
+      # "miniconda"
     ];
   };
 
