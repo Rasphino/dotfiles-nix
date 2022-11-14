@@ -17,6 +17,7 @@
 
       system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
       modules = [ 
+        home-manager.darwinModules.home-manager
         ./hosts/rasphino-mbp/default.nix 
       ]; # will be important later
     };

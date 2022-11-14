@@ -22,4 +22,11 @@
       "iina"
     ];
   };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.YourUserName = { pkgs, ... }: {
+    stateVersion = "22.05";
+    
+  };
 }
