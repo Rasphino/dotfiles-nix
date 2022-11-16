@@ -19,6 +19,7 @@
 
     curl
     wget
+    aria
 
     # programming environments
     dotnet-sdk_7
@@ -43,10 +44,32 @@
       # "miniconda"
     ];
   };
+  
+  users.users.rasp = {
+    name = "rasp";
+    home = "/Users/rasp";
+  };
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.rasp = { pkgs, ... }: {
+    home.username = "rasp";
+    home.homeDirectory = "/Users/rasp";
+    
     home.stateVersion = "22.05";
+    programs.home-manager.enable = true;
+
+    programs.helix = {
+      enable = true;
+      settings = {
+        theme = "dracula";
+        editor.cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+      };
+    };
+    
   };
 }
