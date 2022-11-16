@@ -58,6 +58,12 @@
     
     home.stateVersion = "22.05";
     programs.home-manager.enable = true;
+    
+    programs.git = {
+      enable = true;
+      userName = "Rasphino";
+      userEmail = "im.lihh@outlook.com";
+    };
 
     programs.helix = {
       enable = true;
