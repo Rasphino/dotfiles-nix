@@ -44,6 +44,7 @@
       "logseq"
       "iina"
       "firefox"
+      "steam"
       # "miniconda"
     ];
   };
