@@ -12,6 +12,10 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs"; # ...
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   
   # add the inputs declared above to the argument attribute set
@@ -20,14 +24,18 @@
   , nixpkgs
   , home-manager
   , darwin
+  , nur
   , ... }@inputs: 
   {
     darwinConfigurations."rasphino-mbp" = darwin.lib.darwinSystem {
-      # you can have multiple darwinConfigurations per flake, one per hostname
-
       system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
       modules = [ 
         home-manager.darwinModules.home-manager
+        {
+          nixpkgs.overlays = [
+            nur.overlay
+          ];
+        }
         ./hosts/rasphino-mbp/default.nix 
         ./hosts/rasphino-mbp/kmonad.nix 
       ]; # will be important later

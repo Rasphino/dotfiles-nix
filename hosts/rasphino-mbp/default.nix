@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
   
@@ -8,11 +7,14 @@
   # you'll need to enable this so nix-darwin creates a zshrc sourcing needed environment changes
   programs.zsh.enable = true;
   # bash is enabled by default
+  
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     # editors
     helix
     neovim
+    neovide
 
     alacritty
     zoxide
@@ -41,6 +43,7 @@
       "raycast"
       "logseq"
       "iina"
+      "firefox"
       # "miniconda"
     ];
   };
@@ -58,6 +61,8 @@
     
     home.stateVersion = "22.05";
     programs.home-manager.enable = true;
+    
+    programs.firefox = (import ../../modules/firefox/default.nix) pkgs;
     
     programs.git = {
       enable = true;
