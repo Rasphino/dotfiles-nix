@@ -47,6 +47,17 @@
       "steam"
       # "miniconda"
     ];
+    masApps = {
+      QQ = 451108668;
+      WeChat = 836500024;
+      NflxMultiSubs = 1594059167;
+      Xnip = 1221250572;
+      "Hidden Bar" = 1452453066;
+      "Apple Configurator" = 1037126344;
+      "Microsoft Word" = 462054704;
+      "Microsoft PowerPoint" = 462062816;
+      "Microsoft Excel" = 462058435;
+    };
   };
   
   users.users.rasp = {
