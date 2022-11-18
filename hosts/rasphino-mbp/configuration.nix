@@ -57,7 +57,7 @@
     };
   };
   
-  imports = [ ./kmonad.nix ];
+  imports = [ ./kmonad/kmonad.nix ];
   
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
