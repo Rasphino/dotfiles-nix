@@ -14,18 +14,15 @@
     # editors
     helix
     neovim
-    neovide
 
     alacritty
-    zoxide
 
     curl
     wget
     aria
-
-    # programming environments
-    dotnet-sdk_7
-    rustup
+    
+    htop
+    neofetch
 
     # fonts
     nerdfonts
@@ -60,39 +57,14 @@
     };
   };
   
+  imports = [ ./kmonad.nix ];
+  
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
   users.users.rasp = {
     name = "rasp";
     home = "/Users/rasp";
   };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.rasp = { pkgs, ... }: {
-    home.username = "rasp";
-    home.homeDirectory = "/Users/rasp";
-    
-    home.stateVersion = "22.05";
-    programs.home-manager.enable = true;
-    
-    programs.firefox = (import ../../modules/firefox/default.nix) pkgs;
-    
-    programs.git = {
-      enable = true;
-      userName = "Rasphino";
-      userEmail = "im.lihh@outlook.com";
-    };
-
-    programs.helix = {
-      enable = true;
-      settings = {
-        theme = "dracula";
-        editor.cursor-shape = {
-          insert = "bar";
-          normal = "block";
-          select = "underline";
-        };
-      };
-    };
-    
-  };
+  home-manager.users.rasp = import ./rasp-home.nix;
 }

@@ -1,5 +1,10 @@
-{ pkgs, ... }:
-{
+{ config, lib, inputs, pkgs, ... }:
+with lib;
+let cfg = config.modules.firefox;
+in {
+  options.modules.firefox = { enable = mkEnableOption "firefox"; };
+  config = mkIf cfg.enable {
+    programs.firefox = {
       enable = true;
       package = pkgs.runCommand "firefox-0.0.0" { } "mkdir $out";
 
@@ -62,4 +67,6 @@
         # https://github.com/andreasgrafen/cascade with uglifycss
         userChrome = (builtins.readFile ./userChrome.css);
       };
+    };
+  };
 }

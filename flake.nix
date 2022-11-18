@@ -36,8 +36,7 @@
             nur.overlay
           ];
         }
-        ./hosts/rasphino-mbp/default.nix 
-        ./hosts/rasphino-mbp/kmonad.nix 
+        ./hosts/rasphino-mbp/configuration.nix 
       ]; # will be important later
     };
   };
