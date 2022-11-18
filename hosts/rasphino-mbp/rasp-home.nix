@@ -12,10 +12,11 @@
   ];
   
   # other user specific configuration
-  imports = [ 
-    ../../modules/firefox/default.nix 
-    ../../modules/git/default.nix 
-    ../../modules/helix/default.nix 
+  imports = builtins.map (x: ../.. + builtins.toPath ("/modules/" + x + "/default.nix")) [ 
+    "firefox"
+    "git"
+    "helix"
   ];
+  
   
 }
