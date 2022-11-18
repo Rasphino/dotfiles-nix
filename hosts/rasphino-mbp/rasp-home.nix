@@ -2,6 +2,7 @@
 {
   config.home.username = "rasp";
   config.home.homeDirectory = "/Users/rasp";
+  config.home.stateVersion = "22.05";
   
   config.home.packages = with pkgs; [
     rustup
@@ -10,28 +11,11 @@
     zoxide
   ];
   
-  imports = [ ../../modules/default.nix ];
-  config.modules = {
-    # gui
-    firefox.enable = true;
-  };
-  
   # other user specific configuration
-  config.programs.git = {
-    enable = true;
-    userName = "Rasphino";
-    userEmail = "im.lihh@outlook.com";
-  };
+  imports = [ 
+    ../../modules/firefox/default.nix 
+    ../../modules/git/default.nix 
+    ../../modules/helix/default.nix 
+  ];
   
-  config.programs.helix = {
-    enable = true;
-    settings = {
-      theme = "dracula";
-      editor.cursor-shape = {
-        insert = "bar";
-        normal = "block";
-        select = "underline";
-      };
-    };
-  };
 }
