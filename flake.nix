@@ -32,6 +32,9 @@
             nur.overlay
           ];
         }
+        ({ ... }: {
+          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+        })
       ]; # will be important later
     };
   };
