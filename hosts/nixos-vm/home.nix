@@ -8,6 +8,7 @@
     firefox
     htop
   ];
+
   programs.bash = {
     enable = true;
     bashrcExtra = ''
@@ -29,4 +30,8 @@
       # package.disabled = true;
     };
   };
+
+  imports = [
+    ./neovim/default.nix
+  ];
 }
