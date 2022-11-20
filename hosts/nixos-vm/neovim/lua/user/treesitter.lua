@@ -8,6 +8,7 @@ if not status_ok then
 	return
 end
 
+vim.opt.runtimepath:append("$HOME/.local/share/nvim-treesitter")
 configs.setup({
   parser_install_dir = "$HOME/.local/share/nvim-treesitter",
   ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python", "nix", "rust", "go" }, -- put the language you want in this array
@@ -30,4 +31,3 @@ configs.setup({
 	},
 
 })
-vim.opt.runtimepath:append("$HOME/.local/share/nvim-treesitter")
