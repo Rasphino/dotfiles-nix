@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 npairs.setup({
-	check_ts = false, -- treesitter integration FIXME
+	check_ts = true, -- treesitter integration FIXME
 	disable_filetype = { "TelescopePrompt" },
 	ts_config = {
 		lua = { "string", "source" },
