@@ -21,7 +21,7 @@
   , nur
   , ... }@inputs:
   {
-    nixosConfigurations."nixos-vm" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux"; # "x86_64-darwin" if you're using a pre M1 mac
       modules = [
         ./hosts/nixos-vm/hardware-configuration.nix
