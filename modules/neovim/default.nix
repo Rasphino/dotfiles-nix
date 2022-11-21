@@ -60,6 +60,13 @@
       # -- dap --
       nvim-dap
       nvim-dap-ui
+      # -- enhance paren matching --
+      {
+        plugin = vim-matchup;
+        config = "let g:matchup_matchparen_offscreen = {'method': 'popup'}";
+      }
+      # -- rainbow paren --
+      nvim-ts-rainbow
     ];
 
     extraConfig = ''
