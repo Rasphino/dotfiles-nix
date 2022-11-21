@@ -12,10 +12,7 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs"; # ...
     };
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:nix-community/NUR";
   };
   
   # add the inputs declared above to the argument attribute set
@@ -37,6 +34,23 @@
           ];
         }
         ./hosts/rasphino-mbp/configuration.nix 
+      ]; # will be important later
+    };
+
+    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux"; # "x86_64-darwin" if you're using a pre M1 mac
+      modules = [
+        ./hosts/nixos-vm/hardware-configuration.nix
+        ./hosts/nixos-vm/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          nixpkgs.overlays = [
+            nur.overlay
+          ];
+        }
+        ({ ... }: {
+          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+        })
       ]; # will be important later
     };
   };
