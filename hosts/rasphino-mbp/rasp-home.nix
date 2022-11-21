@@ -16,6 +16,7 @@
     "firefox"
     "git"
     "helix"
+    "neovim"
   ];
   
   

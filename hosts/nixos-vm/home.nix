@@ -32,6 +32,6 @@
   };
 
   imports = [
-    ./neovim/default.nix
+    ../../modules/neovim/default.nix
   ];
 }
