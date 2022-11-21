@@ -42,6 +42,7 @@
       "iina"
       "firefox"
       "steam"
+      "mactex-no-gui"
       # "miniconda"
     ];
     masApps = {
