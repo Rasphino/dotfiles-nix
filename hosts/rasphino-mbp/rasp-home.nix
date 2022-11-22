@@ -7,6 +7,7 @@
   config.home.packages = with pkgs; [
     rustup
     dotnet-sdk_7
+    go
     
     zoxide
   ];

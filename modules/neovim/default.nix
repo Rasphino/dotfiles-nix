@@ -14,7 +14,8 @@
       nodejs nodePackages.prettier 
       sumneko-lua-language-server stylua # lua
       rnix-lsp nixfmt # nix
-      google-java-format
+      google-java-format # java
+      gopls # go
       gcc
       unzip ripgrep fd black tree-sitter
     ];
@@ -67,6 +68,8 @@
       }
       # -- rainbow paren --
       nvim-ts-rainbow
+      vim-surround
+      lightspeed-nvim
     ];
 
     extraConfig = ''
