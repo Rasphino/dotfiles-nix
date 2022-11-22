@@ -6,6 +6,8 @@ end
 
 local servers = {
   "sumneko_lua",
+  "rnix",
+  "gopls",
 }
 
 local opts = {}
