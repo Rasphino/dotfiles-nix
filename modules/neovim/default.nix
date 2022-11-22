@@ -15,7 +15,7 @@
       sumneko-lua-language-server stylua # lua
       rnix-lsp nixfmt # nix
       google-java-format # java
-      gopls # go
+      gofumpt gopls gotools go-tools # go
       gcc
       unzip ripgrep fd black tree-sitter
     ];
