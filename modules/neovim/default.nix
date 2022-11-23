@@ -57,6 +57,7 @@
       telescope-nvim
       # -- treesitter --
       nvim-treesitter
+      nvim-treesitter-textobjects
       # -- git --
       gitsigns-nvim
       # -- dap --
