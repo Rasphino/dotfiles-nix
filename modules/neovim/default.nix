@@ -17,6 +17,7 @@
       rnix-lsp nixfmt # nix
       google-java-format # java
       gofumpt gopls gotools go-tools # go
+      rustup rust-analyzer rustfmt # rust
       tree-sitter
     ];
 
@@ -70,6 +71,8 @@
       nvim-ts-rainbow
       vim-surround
       lightspeed-nvim
+      # -- language plusins --
+      rust-tools-nvim
     ];
 
     extraConfig = ''

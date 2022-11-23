@@ -8,6 +8,7 @@ local servers = {
   "sumneko_lua",
   "rnix",
   "gopls",
+  -- "rust_analyzer", -- auto setup by rust-tools.nvim
 }
 
 local opts = {}

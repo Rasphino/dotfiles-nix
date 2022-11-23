@@ -25,5 +25,8 @@ null_ls.setup {
     diagnostics.staticcheck,
     formatting.gofumpt,
     formatting.goimports,
+
+    -- rust
+    formatting.rustfmt,
   },
 }
