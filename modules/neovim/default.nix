@@ -11,14 +11,13 @@
     withRuby = true;
 
     extraPackages = with pkgs; [
-      python310 python310Packages.flake8
-      nodejs nodePackages.prettier 
+      python310 python310Packages.flake8 black # python
+      nodejs nodePackages.prettier # nodejs
       sumneko-lua-language-server stylua # lua
       rnix-lsp nixfmt # nix
       google-java-format # java
       gofumpt gopls gotools go-tools # go
-      gcc
-      unzip ripgrep fd black tree-sitter
+      tree-sitter
     ];
 
     plugins = with pkgs.vimPlugins; [

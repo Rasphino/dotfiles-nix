@@ -18,6 +18,7 @@
     "git"
     "helix"
     "neovim"
+    "packages"
   ];
   
   

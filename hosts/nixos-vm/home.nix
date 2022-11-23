@@ -33,5 +33,6 @@
 
   imports = [
     ../../modules/neovim/default.nix
+    ../../modules/packages/default.nix
   ];
 }
