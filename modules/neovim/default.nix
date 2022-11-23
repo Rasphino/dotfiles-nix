@@ -17,7 +17,8 @@
       rnix-lsp nixfmt # nix
       google-java-format # java
       gofumpt gopls gotools go-tools # go
-      rustup rust-analyzer rustfmt # rust
+      rustup rust-analyzer rustfmt lldb 
+      # vscode-extensions.vadimcn.vscode-lldb # rust
       tree-sitter
     ];
 
@@ -73,7 +74,10 @@
       vim-surround
       lightspeed-nvim
       # -- language plusins --
-      rust-tools-nvim
+      { 
+        plugin = rust-tools-nvim;
+        # config = "let g:vscode-lldb_path = " + pkgs.stable.vscode-extensions.vadimcn.vscode-lldb.outPath;
+      }
     ];
 
     extraConfig = ''

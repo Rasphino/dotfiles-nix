@@ -1,5 +1,9 @@
 local rt = require("rust-tools")
 
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+
 rt.setup({
   server = {
     on_attach = function(_, bufnr)
@@ -23,5 +27,9 @@ rt.setup({
       vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, opts)
       vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, opts)
     end,
+  },
+  dap = {
+    adapter = require('rust-tools.dap').get_codelldb_adapter(
+      codelldb_path, liblldb_path)
   },
 })

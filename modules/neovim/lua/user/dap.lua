@@ -8,15 +8,16 @@ if not dap_ui_status_ok then
 	return
 end
 
-local dap_install_status_ok, dap_install = pcall(require, "dap-install")
-if not dap_install_status_ok then
-	return
-end
+-- local dap_install_status_ok, dap_install = pcall(require, "dap-install")
+-- if not dap_install_status_ok then
+-- 	return
+-- end
 
-dap_install.setup({})
+-- dap_install.setup({})
 
-dap_install.config("python", {})
+-- dap_install.config("python", {})
 -- add other configs here
+print("DAP!")
 
 dapui.setup({
 	expand_lines = true,

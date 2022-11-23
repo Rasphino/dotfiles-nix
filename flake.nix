@@ -2,6 +2,7 @@
   description = "Rasphino's Nix Flake";
 
   inputs = {
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixpkgs-22.05-darwin";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -19,20 +20,26 @@
   outputs = 
   { self
   , nixpkgs
+  , nixpkgs-stable
   , home-manager
   , darwin
   , nur
   , ... }@inputs: 
-  {
+  let
+    overlay-stable = final: prev: {
+      stable = nixpkgs-stable.legacyPackages.${prev.system}; # considering nixpkgs-unstable is an input registered before.
+    };
+  in {
     darwinConfigurations."rasphino-mbp" = darwin.lib.darwinSystem {
       system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
       modules = [ 
-        home-manager.darwinModules.home-manager
         {
           nixpkgs.overlays = [
+            overlay-stable
             nur.overlay
           ];
         }
+        home-manager.darwinModules.home-manager
         ./hosts/rasphino-mbp/configuration.nix 
       ]; # will be important later
     };
