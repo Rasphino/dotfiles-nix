@@ -43,6 +43,7 @@
       "firefox"
       "steam"
       "mactex-no-gui"
+      "neovide"
       # "miniconda"
     ];
     masApps = {
