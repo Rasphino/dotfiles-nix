@@ -2,6 +2,9 @@
 {
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
+  nix.settings = {
+    sandbox = true;
+  };
   
   # if you use zsh (the default on new macOS installations),
   # you'll need to enable this so nix-darwin creates a zshrc sourcing needed environment changes
