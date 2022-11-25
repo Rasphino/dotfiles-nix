@@ -77,7 +77,7 @@
       # -- language plusins --
       { 
         plugin = rust-tools-nvim;
-        # config = "let g:vscode-lldb_path = " + pkgs.stable.vscode-extensions.vadimcn.vscode-lldb.outPath;
+        config = "let g:vscode_lldb_path = '${pkgs.stable.vscode-extensions.vadimcn.vscode-lldb.outPath}'";
       }
     ];
 
