@@ -47,6 +47,7 @@
       "steam"
       "mactex-no-gui"
       "neovide"
+      "flutter"
       # "miniconda"
     ];
     masApps = {
