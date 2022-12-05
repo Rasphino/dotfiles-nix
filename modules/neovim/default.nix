@@ -72,7 +72,7 @@
       }
       # -- rainbow paren --
       nvim-ts-rainbow
-      vim-surround
+      nvim-surround
       lightspeed-nvim
       # -- language plusins --
       { 
