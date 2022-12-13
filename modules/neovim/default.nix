@@ -60,6 +60,7 @@
       # -- treesitter --
       nvim-treesitter
       nvim-treesitter-textobjects
+      playground
       # -- git --
       gitsigns-nvim
       # -- dap --
