@@ -79,6 +79,7 @@
         plugin = rust-tools-nvim;
         config = "let g:vscode_lldb_path = '${pkgs.stable.vscode-extensions.vadimcn.vscode-lldb.outPath}'";
       }
+      flutter-tools-nvim
     ];
 
     extraConfig = ''
