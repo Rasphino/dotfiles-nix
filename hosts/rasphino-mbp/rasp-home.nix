@@ -1,25 +1,42 @@
-{ config, lib, inputs, pkgs, ...}: 
+{ lib, inputs, pkgs, ... }:
 {
-  config.home.username = "rasp";
-  config.home.homeDirectory = "/Users/rasp";
-  config.home.stateVersion = "22.05";
-  
-  config.home.packages = with pkgs; [
+  home.username = "rasp";
+  home.homeDirectory = "/Users/rasp";
+  home.stateVersion = "22.05";
+
+  home.packages = with pkgs; [
     rustup
     dotnet-sdk_7
     go
-    
-    zoxide
   ];
-  
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableSyntaxHighlighting = true;
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+    };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.starship = {
+    enable = true;
+  };
+
   # other user specific configuration
-  imports = builtins.map (x: ../.. + builtins.toPath ("/modules/" + x + "/default.nix")) [ 
+  imports = builtins.map (x: ../.. + builtins.toPath ("/modules/" + x + "/default.nix")) [
     "firefox"
     "git"
     "helix"
     "neovim"
     "packages"
   ];
-  
-  
+
+
 }
