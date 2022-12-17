@@ -5,7 +5,6 @@
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
-    rustup
     dotnet-sdk_7
     go
   ];
@@ -18,6 +17,9 @@
       enable = true;
       theme = "robbyrussell";
     };
+    initExtra = ''
+      source "$HOME/.cargo/env"
+    '';
   };
 
   programs.zoxide = {
