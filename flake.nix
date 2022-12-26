@@ -14,51 +14,72 @@
       inputs.nixpkgs.follows = "nixpkgs"; # ...
     };
     nur.url = "github:nix-community/NUR";
-  };
-  
-  # add the inputs declared above to the argument attribute set
-  outputs = 
-  { self
-  , nixpkgs
-  , nixpkgs-stable
-  , home-manager
-  , darwin
-  , nur
-  , ... }@inputs: 
-  let
-    overlay-stable = final: prev: {
-      stable = nixpkgs-stable.legacyPackages.${prev.system}; # considering nixpkgs-unstable is an input registered before.
-    };
-  in {
-    darwinConfigurations."rasphino-mbp" = darwin.lib.darwinSystem {
-      system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
-      modules = [ 
-        {
-          nixpkgs.overlays = [
-            overlay-stable
-            nur.overlay
-          ];
-        }
-        home-manager.darwinModules.home-manager
-        ./hosts/rasphino-mbp/configuration.nix 
-      ]; # will be important later
-    };
 
-    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux"; # "x86_64-darwin" if you're using a pre M1 mac
-      modules = [
-        ./hosts/nixos-vm/hardware-configuration.nix
-        ./hosts/nixos-vm/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          nixpkgs.overlays = [
-            nur.overlay
-          ];
-        }
-        ({ ... }: {
-          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-        })
-      ]; # will be important later
+    xbase = {
+      url = "github:kkharji/xbase";
+      flake = false;
     };
   };
+
+  # add the inputs declared above to the argument attribute set
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , home-manager
+    , darwin
+    , nur
+    , ...
+    }@inputs:
+    let
+      overlay-stable = final: prev: {
+        stable = nixpkgs-stable.legacyPackages.${prev.system}; # considering nixpkgs-unstable is an input registered before.
+      };
+      overlay-vim = self: super:
+        let
+          xbase = super.vimUtils.buildVimPluginFrom2Nix {
+            name = "xbase";
+            src = inputs.xbase;
+          };
+        in
+        {
+          vimPlugins =
+            super.vimPlugins // {
+              inherit xbase;
+            };
+        };
+    in
+    {
+      darwinConfigurations."rasphino-mbp" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
+        modules = [
+          {
+            nixpkgs.overlays = [
+              overlay-stable
+              nur.overlay
+              overlay-vim
+            ];
+          }
+          home-manager.darwinModules.home-manager
+          ./hosts/rasphino-mbp/configuration.nix
+        ]; # will be important later
+      };
+
+      nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux"; # "x86_64-darwin" if you're using a pre M1 mac
+        modules = [
+          ./hosts/nixos-vm/hardware-configuration.nix
+          ./hosts/nixos-vm/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              nur.overlay
+            ];
+          }
+          ({ ... }: {
+            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+          })
+        ]; # will be important later
+      };
+    };
 }

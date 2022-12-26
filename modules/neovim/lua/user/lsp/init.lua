@@ -8,6 +8,7 @@ local servers = {
   "sumneko_lua",
   "rnix",
   "gopls",
+  "sourcekit"
   -- "rust_analyzer", -- auto setup by rust-tools.nvim
 }
 

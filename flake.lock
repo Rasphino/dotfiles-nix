@@ -94,7 +94,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
-        "nur": "nur"
+        "nur": "nur",
+        "xbase": "xbase"
       }
     },
     "utils": {
@@ -109,6 +110,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "xbase": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670997379,
+        "narHash": "sha256-Ct1C3HKNY77nmlsA9asYFhLRgyrmd4yYCLyDIw7j9cc=",
+        "owner": "kkharji",
+        "repo": "xbase",
+        "rev": "14849595a5aea48f841cfae37143f78bfa65fc0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kkharji",
+        "repo": "xbase",
         "type": "github"
       }
     }
