@@ -17,7 +17,6 @@ end
 
 -- dap_install.config("python", {})
 -- add other configs here
-print("DAP!")
 
 dapui.setup({
 	expand_lines = true,

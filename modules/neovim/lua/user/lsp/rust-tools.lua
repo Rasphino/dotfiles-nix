@@ -4,8 +4,6 @@ local extension_path = vim.g.vscode_lldb_path .. '/share/vscode/extensions/vadim
 local codelldb_path = extension_path .. '/adapter/codelldb'
 local liblldb_path = extension_path .. '/lldb/lib/liblldb.dylib'
 
-print(codelldb_path)
-
 rt.setup({
   server = {
     on_attach = function(_, bufnr)
