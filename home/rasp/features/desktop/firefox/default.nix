@@ -2,7 +2,9 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.runCommand "firefox-0.0.0" { } "mkdir $out";
+    package =
+      if pkgs.stdenv.isDarwin then
+        (pkgs.runCommand "firefox-0.0.0" { } "mkdir $out") else pkgs.firefox;
 
     # Install extensions from NUR
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -30,11 +32,11 @@
         "browser.search.countryCode" = "SG";
         "browser.search.isUS" = false;
         "general.useragent.locale" = "en-SG";
-        
+
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
         "privacy.trackingprotection.socialtracking.annotate.enabled" = true;
-        
+
         # UI
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
@@ -50,7 +52,7 @@
 
         # Extra
         "media.autoplay.enabled" = false;
-        
+
         "services.sync.declinedEngines" = "addons,passwords,prefs";
         "services.sync.engine.addons" = false;
         "services.sync.engineStatusChanged.addons" = true;
