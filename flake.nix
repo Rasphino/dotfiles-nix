@@ -45,13 +45,7 @@
           system = "aarch64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./hosts/nixos-vm/hardware-configuration.nix
-            ./hosts/nixos-vm/configuration.nix
-            {
-              nixpkgs.overlays = [
-                nur.overlay
-              ];
-            }
+            ./hosts/nixos-vm
             ({ ... }: {
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             })
@@ -84,7 +78,14 @@
         "rasp@nixos-vm" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home/rasp/nixos-vm.nix ];
+          modules = [ 
+            {
+              nixpkgs.overlays = [
+                nur.overlay
+              ];
+            }
+            ./home/rasp/nixos-vm.nix 
+          ];
         };
         "rasp@saki-mk1" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
