@@ -59,6 +59,7 @@
   users.users.rasp = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
   # home-manager.useGlobalPkgs = true;
   # home-manager.users.rasp = (import ./home.nix);
