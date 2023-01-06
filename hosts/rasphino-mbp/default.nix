@@ -1,16 +1,21 @@
 { pkgs, ... }:
 {
+  imports = [
+    ../commom/global
+    ./kmonad/kmonad.nix
+  ];
+
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
   nix.settings = {
     sandbox = true;
   };
-  
+
   # if you use zsh (the default on new macOS installations),
   # you'll need to enable this so nix-darwin creates a zshrc sourcing needed environment changes
   programs.zsh.enable = true;
   # bash is enabled by default
-  
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -23,7 +28,7 @@
     curl
     wget
     aria
-    
+
     htop
     neofetch
 
@@ -64,17 +69,16 @@
       "Microsoft PowerPoint" = 462062816;
       "Microsoft Excel" = 462058435;
       "Tailscale" = 1475387142;
+      "Infuse" = 1136220934;
     };
   };
-  
-  imports = [ ./kmonad/kmonad.nix ];
-  
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+
+  # home-manager.useGlobalPkgs = true;
+  # home-manager.useUserPackages = true;
 
   users.users.rasp = {
     name = "rasp";
     home = "/Users/rasp";
   };
-  home-manager.users.rasp = import ./rasp-home.nix;
+  # home-manager.users.rasp = import ./rasp-home.nix;
 }
