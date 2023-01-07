@@ -6,6 +6,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../commom/global
+      ../commom/optional/podman.nix
     ];
 
   # Bootloader.
