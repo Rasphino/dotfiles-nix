@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +20,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-stable
     , home-manager
     , darwin
     , nur
@@ -53,13 +55,13 @@
         };
 
         # Server in my home
-        saki-mk1 = nixpkgs.lib.nixosSystem {
+        saki-mk1 = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/saki-mk1
             ({ ... }: {
-              system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+              system.configurationRevision = nixpkgs-stable.lib.mkIf (self ? rev) self.rev;
             })
           ];
         };
