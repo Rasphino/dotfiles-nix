@@ -1,6 +1,10 @@
 { inputs, lib, pkgs, config, outputs, ... }:
 {
   nixpkgs = {
+    overlays = [
+      inputs.nur.overlay
+      outputs.overlays.additions
+    ];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);

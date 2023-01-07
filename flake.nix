@@ -30,14 +30,14 @@
       inherit (self) outputs;
     in
     {
+      overlays = import ./overlays;
+
       darwinConfigurations = {
         # Laptop (personal)
         rasphino-mbp = darwin.lib.darwinSystem {
           system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
           specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/rasphino-mbp
-          ];
+          modules = [ ./hosts/rasphino-mbp ];
         };
       };
 
@@ -61,26 +61,12 @@
         "rasp@rasphino-mbp" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-darwin";
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ 
-            {
-              nixpkgs.overlays = [
-                nur.overlay
-              ];
-            }
-            ./home/rasp/rasphino-mbp.nix 
-          ];
+          modules = [ ./home/rasp/rasphino-mbp.nix ];
         };
         "rasp@nixos-vm" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ 
-            {
-              nixpkgs.overlays = [
-                nur.overlay
-              ];
-            }
-            ./home/rasp/nixos-vm.nix 
-          ];
+          modules = [ ./home/rasp/nixos-vm.nix ];
         };
         "rasp@saki-mk1" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";

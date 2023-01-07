@@ -6,7 +6,9 @@
   ] ++ lib.lists.optional pkgs.stdenv.isLinux ./nixos.nix;
 
   nixpkgs = {
-    # overlays = builtins.attrValues outputs.overlays;
+    overlays = [
+      outputs.overlays.additions
+    ];
     config = {
       allowUnfree = true;
     };
