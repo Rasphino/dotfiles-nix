@@ -3,7 +3,7 @@
 {
   imports = [
     ./nix.nix
-  ] ++ lib.lists.optional pkgs.stdenv.isLinux ./nixos.nix;
+  ];
 
   nixpkgs = {
     overlays = [
