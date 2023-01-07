@@ -7,6 +7,7 @@
 
   nixpkgs = {
     overlays = [
+      inputs.clash-meta.overlay
       outputs.overlays.additions
     ];
     config = {

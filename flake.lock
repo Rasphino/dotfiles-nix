@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "clash-meta": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1673105912,
+        "narHash": "sha256-9uRLQ9fCfLR+FTWnMuuQeVHp7yeNEyxo0U46lfJ1SE4=",
+        "owner": "Rasphino",
+        "repo": "Clash.Meta",
+        "rev": "a1d0f221322c8e2b64503ea13bee63f7e150c5eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Rasphino",
+        "repo": "Clash.Meta",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -25,7 +46,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": "utils"
+        "utils": "utils_2"
       },
       "locked": {
         "lastModified": 1672349765,
@@ -90,6 +111,7 @@
     },
     "root": {
       "inputs": {
+        "clash-meta": "clash-meta",
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
@@ -98,6 +120,21 @@
       }
     },
     "utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",

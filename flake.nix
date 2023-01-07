@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs"; # ...
     };
     nur.url = "github:nix-community/NUR";
+
+    clash-meta = {
+      url = "github:Rasphino/Clash.Meta";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # add the inputs declared above to the argument attribute set
