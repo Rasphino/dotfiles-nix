@@ -3,4 +3,5 @@
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   # example = pkgs.callPackage ./example { };
+  clash-premium = pkgs.callPackage ./clash-premium.nix { };
 }
