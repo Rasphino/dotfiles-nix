@@ -46,24 +46,14 @@
         nixos-vm = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/nixos-vm
-            ({ ... }: {
-              system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            })
-          ];
+          modules = [ ./hosts/nixos-vm ];
         };
 
         # Server in my home
         saki-mk1 = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/saki-mk1
-            ({ ... }: {
-              system.configurationRevision = nixpkgs-stable.lib.mkIf (self ? rev) self.rev;
-            })
-          ];
+          modules = [ ./hosts/saki-mk1 ];
         };
       };
 
