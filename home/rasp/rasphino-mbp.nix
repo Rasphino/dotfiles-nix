@@ -13,9 +13,7 @@
   imports = [
     ./global
     ./features/cli/git.nix
-    ./features/cli/zsh.nix
     ./features/desktop/firefox
-    ./features/editor/neovim
     ./features/editor/helix.nix
   ];
 }
