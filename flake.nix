@@ -57,7 +57,10 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
-            # TODO
+            ./hosts/saki-mk1
+            ({ ... }: {
+              system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+            })
           ];
         };
       };
