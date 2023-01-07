@@ -3,7 +3,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../commom/global
       ../commom/optional/podman.nix
@@ -20,8 +21,8 @@
   networking.defaultGateway = "192.168.31.240";
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
   networking.interfaces.enp0s25.ipv4.addresses = [{
-     address = "192.168.31.30";
-     prefixLength = 24;
+    address = "192.168.31.30";
+    prefixLength = 24;
   }];
 
   # Configure network proxy if necessary
@@ -56,16 +57,17 @@
     isNormalUser = true;
     description = "rasphino";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    shell = pkgs.zsh;
+    packages = with pkgs; [ ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-   wget
-   git
-   gcc
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    git
+    gcc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
