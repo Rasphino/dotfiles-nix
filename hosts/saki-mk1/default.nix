@@ -8,6 +8,8 @@
       ./hardware-configuration.nix
       ../commom/global
       ../commom/optional/podman.nix
+
+      ../commom/services/clash
     ];
 
   # Bootloader.
