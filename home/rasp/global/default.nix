@@ -36,5 +36,5 @@
   imports = [
     ./zsh.nix
     ./neovim
-  ];
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 }

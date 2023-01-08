@@ -3,7 +3,7 @@
 {
   imports = [
     ./nix.nix
-  ];
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
     overlays = [

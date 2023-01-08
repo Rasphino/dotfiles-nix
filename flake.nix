@@ -36,6 +36,8 @@
     in
     {
       overlays = import ./overlays;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
       darwinConfigurations = {
         # Laptop (personal)
