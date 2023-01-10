@@ -3,6 +3,7 @@
 {
   imports = [
     ./nix.nix
+    inputs.sops-nix.nixosModules.sops
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {

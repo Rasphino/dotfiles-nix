@@ -1,0 +1,16 @@
+keys:
+  - &admin_rasp age1l94rh5tr6kxsckst2ygkp34kpggan868yfk7pt8pqflall0k8sjqd9xmvn
+  - &host_saki-mk1 age1xjjam5c9k4ral2uc6k3785ujpfuh82w0nhud902zmnwnrjlunayq36l78w
+  - &host_rasphino-mbp age1hecahnhn54pezrfqx8h0mrkz7e82ex8cnmrx3q2va5ru9a2hdc0q3jphca
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_rasp
+      - *host_saki-mk1
+      - *host_rasphino-mbp
+  - path_regex: hosts/saki-mk1/secrets.yaml
+    key_groups:
+    - age:
+      - *admin_rasp
+      - *host_saki-mk1

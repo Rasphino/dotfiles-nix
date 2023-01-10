@@ -13,6 +13,11 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs"; # ...
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
     nur.url = "github:nix-community/NUR";
 
     clash-meta = {
@@ -28,6 +33,7 @@
     , nixpkgs-stable
     , home-manager
     , darwin
+    , sops-nix
     , nur
     , ...
     }@inputs:
