@@ -81,10 +81,62 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  
+
   services.clash-meta = {
     enable = true;
     configFile = "/root/clash-meta-config.yaml";
+  };
+
+  sops.defaultSopsFile = ./secrets.yaml;
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.secrets.grafana-api-key = {
+    mode = "0444";
+  };
+
+  services.promtail = {
+    enable = true;
+    environmentFile = config.sops.secrets.grafana-api-key.path;
+    extraFlags = [ "-config.expand-env=true" ];
+    configuration = {
+      server = {
+        http_listen_port = 0;
+        grpc_listen_port = 0;
+      };
+      positions = {
+        filename = "/tmp/positions.yaml";
+      };
+      clients = [{
+        url = "https://\${GRAFANA_API_KEY}@logs-prod-011.grafana.net/api/prom/push";
+      }];
+      scrape_configs = [{
+        job_name = "journal";
+        journal = {
+          max_age = "2h";
+          labels = {
+            job = "systemd-journal";
+            host = "saki-mk1";
+          };
+        };
+        relabel_configs = [
+          {
+            source_labels = [ "__journal__systemd_unit" ];
+            target_label = "systemd_unit";
+          }
+          {
+            source_labels = [ "__journal__hostname" ];
+            target_label = "nodename";
+          }
+          {
+            source_labels = [ "__journal_syslog_identifier" ];
+            target_label = "syslog_identifier";
+          }
+          {
+            source_labels = [ "__journal__comm" ];
+            target_label = "command";
+          }
+        ];
+      }];
+    };
   };
 
   # Open ports in the firewall.
