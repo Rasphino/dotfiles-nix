@@ -20,7 +20,6 @@
       rustup rust-analyzer rustfmt lldb 
       # vscode-extensions.vadimcn.vscode-lldb # rust
       tree-sitter
-      nerdfonts iosevka # fonts used by neovide
     ];
 
     plugins = with pkgs.vimPlugins; [
