@@ -73,3 +73,10 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+local dap_virtual_text_status_ok, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
+if not dap_virtual_text_status_ok then
+	return
+end
+
+dap_virtual_text.setup({})
