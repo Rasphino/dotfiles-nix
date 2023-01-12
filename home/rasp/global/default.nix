@@ -4,6 +4,7 @@
     overlays = [
       inputs.nur.overlay
       outputs.overlays.additions
+      outputs.overlays.neovim-plugins
     ];
     config = {
       allowUnfree = true;

@@ -80,6 +80,8 @@
         config = "let g:vscode_lldb_path = '${pkgs.vscode-extensions.vadimcn.vscode-lldb.outPath}'";
       }
       flutter-tools-nvim
+      go-nvim
+      guihua-lua # required by go.nvim
     ];
 
     extraConfig = ''

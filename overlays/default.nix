@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs { pkgs = final; };
@@ -10,4 +11,22 @@
     # ...
     # });
   };
+
+  neovim-plugins = final: prev:
+    let
+      go-nvim = prev.vimUtils.buildVimPluginFrom2Nix {
+        name = "go.nvim";
+        src = inputs.go-nvim;
+      };
+      guihua-lua = prev.vimUtils.buildVimPluginFrom2Nix {
+        name = "guihua.lua";
+        src = inputs.guihua-lua;
+      };
+    in
+    {
+      vimPlugins =
+        prev.vimPlugins // {
+          inherit go-nvim guihua-lua;
+        };
+    };
 }

@@ -50,3 +50,4 @@ vim.opt.listchars = {
   precedes = '≪',
   trail = '~',
 }
+vim.opt.relativenumber = true;

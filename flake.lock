@@ -41,6 +41,38 @@
         "type": "github"
       }
     },
+    "go-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673409185,
+        "narHash": "sha256-0BI+Dn8ut0SVMmEZkPIvDuCDh50DpwnZPNyAmOhUFYk=",
+        "owner": "ray-x",
+        "repo": "go.nvim",
+        "rev": "f33866ed004a60c2d48abedead14b3d9477f486b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ray-x",
+        "repo": "go.nvim",
+        "type": "github"
+      }
+    },
+    "guihua-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673350028,
+        "narHash": "sha256-NmCFuzjpNc6tV3JXOE7MJRQdCq/vAHq7OnfzWr38oaM=",
+        "owner": "ray-x",
+        "repo": "guihua.lua",
+        "rev": "a55e30a8d5a44683eaeffbf3d06c39699a173954",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ray-x",
+        "repo": "guihua.lua",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -113,6 +145,8 @@
       "inputs": {
         "clash-meta": "clash-meta",
         "darwin": "darwin",
+        "go-nvim": "go-nvim",
+        "guihua-lua": "guihua-lua",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",

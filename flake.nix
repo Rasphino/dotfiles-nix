@@ -24,6 +24,15 @@
       url = "github:Rasphino/Clash.Meta";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    go-nvim = {
+      url = "github:ray-x/go.nvim";
+      flake = false;
+    };
+    guihua-lua = {
+      url = "github:ray-x/guihua.lua";
+      flake = false;
+    };
   };
 
   # add the inputs declared above to the argument attribute set
@@ -41,7 +50,7 @@
       inherit (self) outputs;
     in
     {
-      overlays = import ./overlays;
+      overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 
